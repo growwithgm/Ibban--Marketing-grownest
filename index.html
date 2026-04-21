@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IBBAN — Digital Marketing Strategy 2026 | Grow Nest</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --black: #080808; --g1: #111; --g2: #1A1A1A; --g3: #242424; --g4: #333;
+  --g5: #555; --g6: #888; --g7: #AAA; --g8: #CCC; --white: #F5F5F5; --pure: #FFF;
+  --border: rgba(255,255,255,.07); --border2: rgba(255,255,255,.13);
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { width: 100%; height: 100%; overflow: hidden; background: var(--black); }
+body { font-family: 'Inter', sans-serif; color: var(--white); -webkit-font-smoothing: antialiased; }
+#app { width: 100vw; height: 100vh; position: relative; overflow: hidden; }
+
+.slide { position: absolute; inset: 0; opacity: 0; pointer-events: none; transform: translateX(60px); transition: opacity .48s cubic-bezier(.4,0,.2,1), transform .48s cubic-bezier(.4,0,.2,1); display: flex; flex-direction: column; overflow: hidden; }
+.slide.active { opacity: 1; pointer-events: all; transform: translateX(0); }
+.slide.exit { opacity: 0; transform: translateX(-60px); }
+
+.s-body { flex: 1; overflow-y: auto; overflow-x: hidden; padding: 0 52px 90px; }
+.s-body::-webkit-scrollbar { width: 2px; }
+.s-body::-webkit-scrollbar-thumb { background: var(--g4); }
+.s-head { padding: 26px 52px 14px; flex-shrink: 0; border-bottom: 1px solid var(--border); margin-bottom: 18px; }
+.eyebrow { font-size: 10px; letter-spacing: .2em; text-transform: uppercase; color: var(--g5); font-weight: 700; margin-bottom: 6px; display: flex; align-items: center; gap: 8px; }
+.eyebrow::before { content: ''; width: 18px; height: 1px; background: var(--g5); }
+.s-title { font-size: 30px; font-weight: 900; color: var(--pure); line-height: 1.1; letter-spacing: -.025em; }
+.s-title em { color: var(--g6); font-style: normal; font-weight: 400; }
+.s-sub { font-size: 13px; color: var(--g6); margin-top: 5px; }
+
+.g2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.g3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
+.g4c { display: grid; grid-template-columns: repeat(4,1fr); gap: 10px; }
+
+.card { background: var(--g2); border: 1px solid var(--border); border-radius: 12px; padding: 16px 18px; }
+.card-top { border-top: 2px solid var(--pure); }
+.card-sm { padding: 12px 14px; }
+
+.sec { font-size: 10px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: var(--g5); margin: 20px 0 9px; display: flex; align-items: center; gap: 8px; }
+.sec::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+
+.stat { background: var(--g2); border: 1px solid var(--border); border-radius: 12px; padding: 14px 16px; border-top: 2px solid var(--pure); }
+.stat-lbl { font-size: 10px; text-transform: uppercase; letter-spacing: .12em; color: var(--g5); font-weight: 700; margin-bottom: 6px; }
+.stat-val { font-size: 30px; font-weight: 900; color: var(--pure); letter-spacing: -.03em; line-height: 1; margin-bottom: 4px; }
+.stat-desc { font-size: 11px; color: var(--g6); line-height: 1.5; }
+
+.tbl { width: 100%; border-collapse: collapse; }
+.tbl tr { border-bottom: 1px solid var(--border); }
+.tbl tr:last-child { border-bottom: none; }
+.tbl td { padding: 8px 14px; font-size: 13px; vertical-align: top; }
+.tbl td:first-child { color: var(--g6); width: 34%; font-weight: 500; }
+.tbl td:last-child { color: var(--white); }
+
+.badge { display: inline-block; font-size: 10px; font-weight: 700; padding: 3px 9px; border-radius: 20px; letter-spacing: .05em; text-transform: uppercase; }
+.bw { background: var(--pure); color: var(--black); }
+.bo { background: transparent; color: var(--g7); border: 1px solid var(--g4); }
+.bi { background: var(--g3); color: var(--g6); border: 1px solid var(--border); }
+
+.bar-lbl { display: flex; justify-content: space-between; font-size: 11px; color: var(--g6); margin-bottom: 4px; }
+.bar-bg { background: var(--g3); border-radius: 3px; height: 5px; overflow: hidden; }
+.bar-fill { height: 100%; border-radius: 3px; background: var(--pure); transition: width 1.2s cubic-bezier(.4,0,.2,1); }
+
+.crow { display: flex; align-items: center; gap: 10px; padding: 10px 13px; background: var(--g2); border: 1px solid var(--border); border-radius: 10px; margin-bottom: 6px; }
+.crow-name { font-size: 13px; font-weight: 600; color: var(--white); min-width: 108px; }
+.crow-score { font-size: 11px; font-family: 'DM Mono', monospace; color: var(--g7); min-width: 30px; text-align: right; }
+.crow-note { font-size: 11px; color: var(--g6); font-style: italic; margin: -2px 0 7px 32px; }
+
+.plt { background: var(--g2); border: 1px solid var(--border); border-radius: 14px; padding: 18px; display: flex; flex-direction: column; gap: 8px; }
+.plt-name { font-size: 16px; font-weight: 800; color: var(--pure); }
+.plt-why { font-size: 12px; color: var(--g6); line-height: 1.6; border-top: 1px solid var(--border); padding-top: 8px; }
+.plt-item { font-size: 12px; color: var(--g8); line-height: 1.5; display: flex; gap: 7px; align-items: flex-start; }
+.plt-item::before { content: '→'; color: var(--g5); flex-shrink: 0; font-size: 11px; margin-top: 1px; }
+
+.svc { display: flex; align-items: flex-start; gap: 10px; padding: 9px 14px; border-bottom: 1px solid var(--border); }
+.svc:last-child { border-bottom: none; }
+.svc-yes { color: var(--pure); font-size: 14px; flex-shrink: 0; margin-top: 1px; }
+.svc-no { color: var(--g5); font-size: 14px; flex-shrink: 0; margin-top: 1px; }
+.svc-t { font-size: 13px; color: var(--white); }
+.svc-s { font-size: 11px; color: var(--g6); margin-top: 2px; }
+
+.tl { position: relative; padding-left: 24px; }
+.tl-line { position: absolute; left: 7px; top: 8px; bottom: 8px; width: 1px; background: linear-gradient(to bottom, var(--pure), var(--g4)); }
+.tl-item { position: relative; margin-bottom: 13px; }
+.tl-dot { position: absolute; left: -21px; top: 9px; width: 12px; height: 12px; border-radius: 50%; border: 1.5px solid var(--g5); background: var(--black); }
+.tl-dot.on { background: var(--pure); border-color: var(--pure); }
+.tl-card { background: var(--g2); border: 1px solid var(--border); border-radius: 12px; padding: 13px 16px; }
+.tl-head { display: flex; align-items: center; gap: 9px; margin-bottom: 8px; }
+.tl-when { font-size: 10px; font-family: 'DM Mono', monospace; color: var(--g6); background: var(--g3); padding: 2px 8px; border-radius: 6px; border: 1px solid var(--border); }
+.tl-name { font-size: 13px; font-weight: 700; color: var(--pure); }
+.tl-steps { display: grid; grid-template-columns: 1fr 1fr; gap: 3px; }
+.tl-step { font-size: 11px; color: var(--g7); display: flex; gap: 5px; align-items: flex-start; padding: 2px 0; }
+.tl-step::before { content: '·'; color: var(--g5); font-size: 14px; line-height: 1; flex-shrink: 0; }
+.tl-note { font-size: 11px; color: var(--g5); margin-top: 8px; border-top: 1px solid var(--border); padding-top: 6px; font-style: italic; }
+
+.pbox { background: var(--pure); border-radius: 12px; padding: 16px 20px; display: flex; align-items: center; justify-content: space-between; }
+.pbox-lbl { font-size: 10px; color: rgba(0,0,0,.5); text-transform: uppercase; letter-spacing: .12em; font-weight: 700; margin-bottom: 3px; }
+.pbox-val { font-size: 36px; font-weight: 900; color: var(--black); letter-spacing: -.03em; line-height: 1; }
+.pbox-note { font-size: 11px; color: rgba(0,0,0,.4); margin-top: 3px; }
+.pbox2 { background: var(--g3); border: 1px solid var(--border2); border-radius: 12px; padding: 16px 20px; }
+
+.offer { background: var(--g2); border: 1px solid var(--border2); border-radius: 14px; padding: 14px 16px; margin-bottom: 10px; }
+.offer-tag { font-size: 10px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: var(--g5); margin-bottom: 10px; display: flex; align-items: center; gap: 8px; }
+.offer-tag::before { content: ''; width: 14px; height: 1px; background: var(--g5); }
+
+.klarna-bar { background: rgba(255,179,199,.06); border: 1px solid rgba(255,179,199,.18); border-radius: 10px; padding: 10px 15px; display: flex; align-items: center; gap: 12px; flex-wrap: wrap; margin-bottom: 13px; }
+.klarna-badge { background: #FFB3C7; color: #080808; font-size: 11px; font-weight: 800; padding: 4px 11px; border-radius: 5px; letter-spacing: .04em; flex-shrink: 0; }
+
+.note-box { background: var(--g2); border: 1px solid var(--border2); border-left: 2px solid var(--g5); border-radius: 0 10px 10px 0; padding: 11px 15px; font-size: 12px; color: var(--g7); line-height: 1.6; }
+.warn { display: flex; align-items: flex-start; gap: 10px; background: var(--g2); border: 1px solid var(--border2); border-radius: 10px; padding: 11px 16px; margin-top: 9px; }
+.ref-box { background: var(--g2); border: 1px solid var(--border2); border-radius: 12px; padding: 13px 16px; }
+
+@keyframes fadeUp { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
+.slide.active .a { animation: fadeUp .42s cubic-bezier(.4,0,.2,1) both; }
+.a:nth-child(1){animation-delay:.06s}.a:nth-child(2){animation-delay:.12s}.a:nth-child(3){animation-delay:.19s}.a:nth-child(4){animation-delay:.26s}.a:nth-child(5){animation-delay:.33s}.a:nth-child(6){animation-delay:.40s}
+
+#nav { position: fixed; bottom: 22px; left: 50%; transform: translateX(-50%); display: flex; align-items: center; gap: 10px; z-index: 200; background: var(--g2); border: 1px solid var(--border2); padding: 7px 15px; border-radius: 50px; }
+.nb { background: none; border: none; color: var(--g6); cursor: pointer; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 16px; transition: background .15s, color .15s; }
+.nb:hover { background: var(--g3); color: var(--pure); }
+.nb:disabled { opacity: .22; cursor: not-allowed; }
+#ctr { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--g5); min-width: 38px; text-align: center; }
+.dots { display: flex; gap: 4px; align-items: center; }
+.dn { width: 5px; height: 5px; border-radius: 50%; background: var(--g4); cursor: pointer; transition: background .18s, transform .18s; }
+.dn.on { background: var(--pure); transform: scale(1.5); }
+</style>
+</head>
+<body>
+<div id="app">
+
+<!-- S1 TITLE -->
+<div class="slide active" id="s1" style="justify-content:center;background:var(--black)">
+  <div style="position:absolute;inset:0;background:radial-gradient(ellipse 55% 50% at 72% 38%,rgba(255,255,255,.025) 0%,transparent 70%);pointer-events:none"></div>
+  <div style="position:relative;z-index:1;padding:0 72px">
+    <div class="a" style="display:flex;align-items:center;gap:8px;margin-bottom:18px">
+      <div style="width:26px;height:1px;background:var(--g5)"></div>
+      <span style="font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--g5);font-weight:700">Digital Marketing Strategy · 2026</span>
+    </div>
+    <div class="a" style="font-size:86px;font-weight:900;color:var(--pure);line-height:.92;letter-spacing:-.04em;margin-bottom:16px">IB<span style="color:var(--g5)">BAN</span></div>
+    <div class="a" style="font-size:15px;color:var(--g6);font-weight:400;margin-bottom:30px;max-width:400px;line-height:1.7">Handmade Since 1982 &nbsp;·&nbsp; India Atelier &nbsp;·&nbsp; Europe + Middle East</div>
+    <div class="a" style="display:grid;grid-template-columns:repeat(4,auto);width:fit-content;border:1px solid var(--border2);border-radius:10px;overflow:hidden;margin-bottom:36px">
+      <div style="padding:12px 20px;border-right:1px solid var(--border)"><div style="font-family:'DM Mono',monospace;font-size:15px;color:var(--pure);font-weight:500">B2B</div><div style="font-size:11px;color:var(--g6);margin-top:2px">Wholesale</div></div>
+      <div style="padding:12px 20px;border-right:1px solid var(--border)"><div style="font-family:'DM Mono',monospace;font-size:15px;color:var(--pure);font-weight:500">B2C</div><div style="font-size:11px;color:var(--g6);margin-top:2px">Direct Sales</div></div>
+      <div style="padding:12px 20px;border-right:1px solid var(--border)"><div style="font-family:'DM Mono',monospace;font-size:15px;color:var(--pure);font-weight:500">EU + ME</div><div style="font-size:11px;color:var(--g6);margin-top:2px">Multi-Region</div></div>
+      <div style="padding:12px 20px"><div style="font-family:'DM Mono',monospace;font-size:15px;color:var(--pure);font-weight:500">3×</div><div style="font-size:11px;color:var(--g6);margin-top:2px">Platforms</div></div>
+    </div>
+    <div class="a" style="display:flex;align-items:center;gap:12px;border:1px solid var(--border2);padding:11px 16px;border-radius:10px;width:fit-content;background:var(--g2)">
+      <span style="font-size:18px">⚡</span>
+      <div><div style="font-size:13px;font-weight:700;color:var(--white)">Grow Nest</div><div style="font-size:11px;color:var(--g6);font-family:'DM Mono',monospace">grownest.pro &nbsp;·&nbsp; April 2026</div></div>
+      <div style="margin-left:16px;padding-left:16px;border-left:1px solid var(--border);font-size:11px;color:var(--g6)">Confidential — For Client Use Only</div>
+    </div>
+  </div>
+</div>
+
+<!-- S2 BRAND OVERVIEW -->
+<div class="slide" id="s2" style="background:var(--black)">
+  <div class="s-head">
+    <div class="eyebrow">01 — Brand Overview</div>
+    <div class="s-title">IBBAN — <em>Who They Are</em></div>
+    <div class="s-sub">44 years of heritage · Handmade in India · Customers across the globe</div>
+  </div>
+  <div class="s-body">
+    <div class="g4c a" style="margin-bottom:13px">
+      <div class="stat"><div class="stat-lbl">Heritage</div><div class="stat-val">44</div><div class="stat-desc">Years of experience · Est. 1982</div></div>
+      <div class="stat"><div class="stat-lbl">Craftsmanship</div><div class="stat-val">100%</div><div class="stat-desc">Handmade · India Atelier</div></div>
+      <div class="stat"><div class="stat-lbl">Price Range</div><div class="stat-val" style="font-size:24px">€32–80</div><div class="stat-desc">Dresses · Jackets · Coats · Bags</div></div>
+      <div class="stat"><div class="stat-lbl">Warehouses</div><div class="stat-val">2</div><div class="stat-desc">Spain → Europe · India → ME</div></div>
+    </div>
+    <div class="klarna-bar a">
+      <div class="klarna-badge">Klarna</div>
+      <div style="font-size:13px;color:var(--white);font-weight:600">Buy Now, Pay Later — 0% Interest</div>
+      <div style="font-size:12px;color:var(--g6);border-left:1px solid var(--border);padding-left:12px">Customers can split payments into 3 equal installments — zero interest, zero fees</div>
+      <div style="margin-left:auto;background:rgba(255,179,199,.1);border:1px solid rgba(255,179,199,.2);border-radius:7px;padding:4px 11px;font-size:11px;color:#FFB3C7;flex-shrink:0;font-family:'DM Mono',monospace">€66 → 3 × €22</div>
+    </div>
+    <div class="g2 a">
+      <div>
+        <div class="sec">Brand DNA</div>
+        <div class="card" style="padding:0;overflow:hidden">
+          <table class="tbl">
+            <tr><td>Founded</td><td>1982 — Fuenlabrada, Madrid, Spain</td></tr>
+            <tr><td>Founder</td><td>Mohammad Bawri</td></tr>
+            <tr><td>Manufacturing</td><td>India Atelier — Handmade Artisan</td></tr>
+            <tr><td>Platform</td><td>Shopify · Professional &amp; Scalable</td></tr>
+            <tr><td>Payments</td><td>Klarna · Apple Pay · Visa · Amex · Bancontact</td></tr>
+            <tr><td>Social</td><td>Instagram · TikTok @ibban.europe · Facebook</td></tr>
+            <tr><td>Target Customer</td><td>Free-spirited women · Age 25–50 · Global</td></tr>
+            <tr><td>Collections</td><td>Summer 2026 + Autumn/Winter 2026</td></tr>
+          </table>
+        </div>
+      </div>
+      <div>
+        <div class="sec">Key Strengths — Our Ads Will Leverage These</div>
+        <div style="display:flex;flex-direction:column;gap:7px">
+          <div class="card card-sm" style="display:flex;gap:10px;align-items:flex-start">
+            <span style="font-size:16px;flex-shrink:0">🏆</span>
+            <div><div style="font-size:13px;font-weight:600;color:var(--pure)">44-Year Legacy</div><div style="font-size:12px;color:var(--g6);margin-top:2px">Zara or Shein can never replicate this — our most powerful ad narrative</div></div>
+          </div>
+          <div class="card card-sm" style="display:flex;gap:10px;align-items:flex-start">
+            <span style="font-size:16px;flex-shrink:0">🚢</span>
+            <div><div style="font-size:13px;font-weight:600;color:var(--pure)">Dual Warehouse Advantage</div><div style="font-size:12px;color:var(--g6);margin-top:2px">Spain → Europe in 2–3 days · India → Middle East in 3–4 days</div></div>
+          </div>
+          <div class="card card-sm" style="display:flex;gap:10px;align-items:flex-start;border-color:rgba(255,179,199,.18)">
+            <span style="font-size:16px;flex-shrink:0">💳</span>
+            <div><div style="font-size:13px;font-weight:600;color:var(--pure)">Klarna — Conversion Booster</div><div style="font-size:12px;color:var(--g6);margin-top:2px">BNPL increases conversions by 20–30% across European markets</div></div>
+          </div>
+          <div class="card card-sm" style="display:flex;gap:10px;align-items:flex-start">
+            <span style="font-size:16px;flex-shrink:0">📈</span>
+            <div><div style="font-size:13px;font-weight:600;color:var(--pure)">Boho 3.0 — 2026 Peak Trend</div><div style="font-size:12px;color:var(--g6);margin-top:2px">Handmade + artisan fashion searches up +25% — perfect market entry timing</div></div>
+          </div>
+          <div class="card card-sm" style="display:flex;gap:10px;align-items:flex-start">
+            <span style="font-size:16px;flex-shrink:0">🎵</span>
+            <div><div style="font-size:13px;font-weight:600;color:var(--pure)">TikTok @ibban.europe — Already Active</div><div style="font-size:12px;color:var(--g6);margin-top:2px">Existing audience we can amplify — no need to start from zero</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- S3 MARKET SIZE -->
+<div class="slide" id="s3" style="background:var(--black)">
+  <div class="s-head">
+    <div class="eyebrow">02 — Market Research</div>
+    <div class="s-title">How Big Is <em>The Opportunity?</em></div>
+    <div class="s-sub">Global market data + IBBAN's exact niche position</div>
+  </div>
+  <div class="s-body">
+    <div class="g4c a" style="margin-bottom:19px">
+      <div class="stat"><div class="stat-lbl">Global Women's Apparel</div><div class="stat-val" style="font-size:24px">$360B+</div><div class="stat-desc">Europe alone: $43B+ · Growing YoY</div></div>
+      <div class="stat"><div class="stat-lbl">Boho Search Growth</div><div class="stat-val">+25%</div><div class="stat-desc">"Boho chic" Google searches 2025–26</div></div>
+      <div class="stat"><div class="stat-lbl">Handmade Fashion YoY</div><div class="stat-val">+17%</div><div class="stat-desc">Artisan niche — fastest growing segment</div></div>
+      <div class="stat"><div class="stat-lbl">Trend Status 2026</div><div class="stat-val" style="font-size:21px">Peak ↑</div><div class="stat-desc">Boho 3.0 — ideal year to enter at scale</div></div>
+    </div>
+    <div class="g2 a">
+      <div>
+        <div class="sec">Market Opportunity Score</div>
+        <div style="display:flex;flex-direction:column;gap:11px">
+          <div><div class="bar-lbl"><span>UK Boho Market</span><span style="color:var(--pure);font-family:'DM Mono',monospace">95%</span></div><div class="bar-bg"><div class="bar-fill" style="width:95%"></div></div></div>
+          <div><div class="bar-lbl"><span>France Boho Market</span><span style="color:var(--pure);font-family:'DM Mono',monospace">90%</span></div><div class="bar-bg"><div class="bar-fill" style="width:90%"></div></div></div>
+          <div><div class="bar-lbl"><span>UAE / Middle East</span><span style="color:var(--pure);font-family:'DM Mono',monospace">88%</span></div><div class="bar-bg"><div class="bar-fill" style="width:88%"></div></div></div>
+          <div><div class="bar-lbl"><span>B2B Wholesale Europe</span><span style="color:var(--pure);font-family:'DM Mono',monospace">88%</span></div><div class="bar-bg"><div class="bar-fill" style="width:88%"></div></div></div>
+          <div><div class="bar-lbl"><span>Netherlands — Online Shopping</span><span style="color:var(--pure);font-family:'DM Mono',monospace">85%</span></div><div class="bar-bg"><div class="bar-fill" style="width:85%"></div></div></div>
+          <div><div class="bar-lbl"><span>Germany Fashion Market</span><span style="color:var(--pure);font-family:'DM Mono',monospace">80%</span></div><div class="bar-bg"><div class="bar-fill" style="width:80%"></div></div></div>
+        </div>
+      </div>
+      <div>
+        <div class="sec">Why Now Is the Right Time</div>
+        <div style="display:flex;flex-direction:column;gap:7px">
+          <div class="card card-sm" style="display:flex;gap:10px;align-items:flex-start">
+            <span style="font-size:16px;flex-shrink:0">🔄</span>
+            <div><div style="font-size:13px;font-weight:600;color:var(--pure)">Consumer Shift</div><div style="font-size:12px;color:var(--g6);margin-top:2px">Consumers are moving away from fast fashion — demand for authentic handmade is accelerating</div></div>
+          </div>
+          <div class="card card-sm" style="display:flex;gap:10px;align-items:flex-start">
+            <span style="font-size:16px;flex-shrink:0">⏱️</span>
+            <div><div style="font-size:13px;font-weight:600;color:var(--pure)">Perfect Timing</div><div style="font-size:12px;color:var(--g6);margin-top:2px">Boho dress searches peak in March &amp; August — we need to launch before the Summer 2026 surge</div></div>
+          </div>
+          <div class="card card-sm" style="display:flex;gap:10px;align-items:flex-start">
+            <span style="font-size:16px;flex-shrink:0">🎯</span>
+            <div><div style="font-size:13px;font-weight:600;color:var(--pure)">Zero Paid Ads Currently</div><div style="font-size:12px;color:var(--g6);margin-top:2px">A clean slate gives us first-mover advantage with full data control from day one</div></div>
+          </div>
+          <div class="card card-sm" style="display:flex;gap:10px;align-items:flex-start">
+            <span style="font-size:16px;flex-shrink:0">💼</span>
+            <div><div style="font-size:13px;font-weight:600;color:var(--pure)">Untapped B2B Market</div><div style="font-size:12px;color:var(--g6);margin-top:2px">Thousands of European boutiques are actively sourcing unique handmade brands — this market is wide open</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- S4 COUNTRIES -->
+<div class="slide" id="s4" style="background:var(--black)">
+  <div class="s-head">
+    <div class="eyebrow">03 — Geo Strategy</div>
+    <div class="s-title">Where Will <em>The Sales Come From?</em></div>
+    <div class="s-sub">Spain warehouse → Europe &nbsp;·&nbsp; India warehouse → Middle East</div>
+  </div>
+  <div class="s-body">
+    <div class="g2 a">
+      <div>
+        <div class="sec">📍 Phase 1 — Priority Markets (Spain Warehouse)</div>
+        <div class="crow"><span style="font-size:18px">🇬🇧</span><div class="crow-name">United Kingdom <span class="badge bw" style="font-size:9px;margin-left:4px">#1</span></div><div style="flex:1"><div class="bar-bg"><div class="bar-fill" style="width:95%"></div></div></div><div class="crow-score">95%</div></div>
+        <div class="crow-note">73% of UK adults have invested in handcrafted items — Europe's highest demand for artisan fashion</div>
+        <div class="crow"><span style="font-size:18px">🇫🇷</span><div class="crow-name">France <span class="badge bw" style="font-size:9px;margin-left:4px">#2</span></div><div style="flex:1"><div class="bar-bg"><div class="bar-fill" style="width:90%"></div></div></div><div class="crow-score">90%</div></div>
+        <div class="crow-note">Birthplace of boho-chic — Isabel Marant, Chloé — IBBAN fits this market perfectly</div>
+        <div class="crow"><span style="font-size:18px">🇳🇱</span><div class="crow-name">Netherlands <span class="badge bw" style="font-size:9px;margin-left:4px">#3</span></div><div style="flex:1"><div class="bar-bg"><div class="bar-fill" style="width:85%"></div></div></div><div class="crow-score">85%</div></div>
+        <div class="crow-note">Europe's highest online shopping rate · Bancontact payment already enabled on the store</div>
+        <div class="crow"><span style="font-size:18px">🇩🇪</span><div class="crow-name">Germany</div><div style="flex:1"><div class="bar-bg"><div class="bar-fill" style="width:80%"></div></div></div><div class="crow-score">80%</div></div>
+        <div class="crow-note">Europe's largest fashion market — consumers willing to pay premium for quality</div>
+        <div class="sec" style="margin-top:15px">🟡 Phase 2 — Expansion Markets</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px">
+          <div class="card card-sm" style="text-align:center"><span style="font-size:18px">🇦🇺</span><div style="font-size:12px;font-weight:700;margin-top:5px;color:var(--pure)">Australia</div><div style="font-size:10px;color:var(--g6);margin-top:2px">Strong boho culture</div></div>
+          <div class="card card-sm" style="text-align:center"><span style="font-size:18px">🇧🇪</span><div style="font-size:12px;font-weight:700;margin-top:5px;color:var(--pure)">Belgium</div><div style="font-size:10px;color:var(--g6);margin-top:2px">Bancontact ready</div></div>
+          <div class="card card-sm" style="text-align:center"><span style="font-size:18px">🇮🇹</span><div style="font-size:12px;font-weight:700;margin-top:5px;color:var(--pure)">Italy</div><div style="font-size:10px;color:var(--g6);margin-top:2px">Fashion-forward market</div></div>
+        </div>
+      </div>
+      <div>
+        <div class="sec">🌙 Phase 1B — Middle East (India Warehouse)</div>
+        <div class="crow"><span style="font-size:18px">🇦🇪</span><div class="crow-name">UAE — Dubai <span class="badge bo" style="font-size:9px;margin-left:4px">Hidden Gold</span></div><div style="flex:1"><div class="bar-bg"><div class="bar-fill" style="width:88%"></div></div></div><div class="crow-score">88%</div></div>
+        <div class="crow-note">Massive expat community — Indian artisan goods are deeply appreciated in Dubai</div>
+        <div class="crow"><span style="font-size:18px">🇸🇦</span><div class="crow-name">Saudi Arabia</div><div style="flex:1"><div class="bar-bg"><div class="bar-fill" style="width:75%"></div></div></div><div class="crow-score">75%</div></div>
+        <div class="crow-note">Vision 2030 — young women are rapidly embracing Western fashion trends</div>
+        <div class="card card-sm" style="margin-bottom:14px;margin-top:4px;display:flex;gap:10px;align-items:flex-start">
+          <span style="font-size:18px;flex-shrink:0">🚢</span>
+          <div><div style="font-size:13px;font-weight:700;color:var(--pure);margin-bottom:4px">Dual Warehouse = True Global Reach</div><div style="font-size:12px;color:var(--g6);line-height:1.6">Spain → Europe (2–3 days) · India → Middle East (3–4 days). A professional dual-fulfillment model that most competitors simply cannot match.</div></div>
+        </div>
+        <div class="note-box">
+          <div style="display:flex;align-items:flex-start;gap:9px">
+            <span style="font-size:16px;flex-shrink:0">📊</span>
+            <div><strong style="color:var(--g8)">Research Note:</strong> These country priorities are based on our own market analysis — demand data, competition levels, and online shopping behavior. You know your business best. If you'd like to adjust any market, we are fully open to refining the strategy together. This is a recommendation, not a fixed plan.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- S5 PLATFORM STRATEGY -->
+<div class="slide" id="s5" style="background:var(--black)">
+  <div class="s-head">
+    <div class="eyebrow">04 — Platform Strategy</div>
+    <div class="s-title">Which Platform, <em>Why &amp; When?</em></div>
+    <div class="s-sub">Google + Meta + TikTok — each platform plays a distinct role</div>
+  </div>
+  <div class="s-body">
+    <div class="g3 a" style="margin-bottom:16px">
+      <div class="plt">
+        <div style="display:flex;align-items:center;gap:10px"><span style="font-size:24px">🔍</span><div class="plt-name">Google Ads</div><span class="badge bw" style="margin-left:auto">Priority #1</span></div>
+        <div style="display:flex;flex-direction:column;gap:5px">
+          <div class="plt-item">B2B Search — targeting boutique owners in UK, France, NL</div>
+          <div class="plt-item">B2C Shopping — product feed across Europe</div>
+          <div class="plt-item">High-intent traffic — buyers are already searching</div>
+          <div class="plt-item">Separate campaigns for UAE + Saudi</div>
+        </div>
+        <div class="plt-why">The buyer is already ready — we don't need to convince anyone. They search for "wholesale boho fashion" and we appear. No friction, no persuasion needed.</div>
+        <div style="display:flex;align-items:center;gap:8px;padding-top:8px;border-top:1px solid var(--border)">
+          <span style="font-size:11px;color:var(--g6);font-weight:600;min-width:52px">Budget: 60%</span>
+          <div style="flex:1;background:var(--g3);border-radius:3px;height:4px;overflow:hidden"><div style="width:60%;height:100%;background:var(--pure);border-radius:3px"></div></div>
+        </div>
+      </div>
+      <div class="plt">
+        <div style="display:flex;align-items:center;gap:10px"><span style="font-size:24px">📘</span><div class="plt-name">Meta Ads</div><span class="badge bo" style="margin-left:auto">Priority #2</span></div>
+        <div style="display:flex;flex-direction:column;gap:5px">
+          <div class="plt-item">Instagram Reels — B2C brand awareness</div>
+          <div class="plt-item">Facebook — retarget Google website visitors</div>
+          <div class="plt-item">Women 25–45 Europe — precision interest targeting</div>
+          <div class="plt-item">Lookalike audiences built from pixel data</div>
+        </div>
+        <div class="plt-why">Instagram is the perfect visual platform for IBBAN's boho aesthetic. We use Google to attract and Meta to convert — this combination delivers the highest ROAS.</div>
+        <div style="display:flex;align-items:center;gap:8px;padding-top:8px;border-top:1px solid var(--border)">
+          <span style="font-size:11px;color:var(--g6);font-weight:600;min-width:52px">Budget: 30%</span>
+          <div style="flex:1;background:var(--g3);border-radius:3px;height:4px;overflow:hidden"><div style="width:30%;height:100%;background:var(--pure);border-radius:3px"></div></div>
+        </div>
+      </div>
+      <div class="plt">
+        <div style="display:flex;align-items:center;gap:10px"><span style="font-size:24px">🎵</span><div class="plt-name">TikTok</div><span class="badge bi" style="margin-left:auto">Pixel Only</span></div>
+        <div style="display:flex;flex-direction:column;gap:5px">
+          <div class="plt-item">@ibban.europe already has an active presence</div>
+          <div class="plt-item">We install the pixel first — data collection begins</div>
+          <div class="plt-item">India factory "making process" content goes viral</div>
+          <div class="plt-item">Spark Ads amplify organic posts in Phase 2</div>
+        </div>
+        <div class="plt-why">Pixel first, campaigns later. By the time we launch TikTok ads, the algorithm will already know your ideal customer. Lowest CPM at ~€3.50 avg.</div>
+        <div style="display:flex;align-items:center;gap:8px;padding-top:8px;border-top:1px solid var(--border)">
+          <span style="font-size:11px;color:var(--g6);font-weight:600;min-width:52px">Budget: 10%</span>
+          <div style="flex:1;background:var(--g3);border-radius:3px;height:4px;overflow:hidden"><div style="width:10%;height:100%;background:var(--g6);border-radius:3px"></div></div>
+        </div>
+      </div>
+    </div>
+    <div class="sec a">Pixel Strategy — We Install All Pixels on Day One</div>
+    <div class="g3 a">
+      <div class="card card-sm" style="display:flex;gap:10px;align-items:flex-start">
+        <span style="font-size:18px;flex-shrink:0">📘</span>
+        <div><div style="display:flex;align-items:center;gap:8px;margin-bottom:5px"><span style="font-size:13px;font-weight:700;color:var(--pure)">Meta Pixel + CAPI</span><span class="badge bw" style="font-size:9px">Day 1</span></div><div style="font-size:12px;color:var(--g6)">Installed on day one — Meta needs 2–4 weeks to learn your audience. The earlier we start, the better our campaigns will perform at launch.</div></div>
+      </div>
+      <div class="card card-sm" style="display:flex;gap:10px;align-items:flex-start">
+        <span style="font-size:18px;flex-shrink:0">🎵</span>
+        <div><div style="display:flex;align-items:center;gap:8px;margin-bottom:5px"><span style="font-size:13px;font-weight:700;color:var(--pure)">TikTok Pixel</span><span class="badge bi" style="font-size:9px">Passive Mode</span></div><div style="font-size:12px;color:var(--g6)">No campaigns yet — data collection only. When we launch Phase 2, a trained audience will already be waiting.</div></div>
+      </div>
+      <div class="card card-sm" style="display:flex;gap:10px;align-items:flex-start">
+        <span style="font-size:18px;flex-shrink:0">📊</span>
+        <div><div style="display:flex;align-items:center;gap:8px;margin-bottom:5px"><span style="font-size:13px;font-weight:700;color:var(--pure)">GA4 + GTM + Ads Tag</span><span class="badge bw" style="font-size:9px">Day 1</span></div><div style="font-size:12px;color:var(--g6)">Purchase, B2B form submission, and add-to-cart events all tracked. Smart Bidding cannot function without this data.</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- S6 SERVICES -->
+<div class="slide" id="s6" style="background:var(--black)">
+  <div class="s-head">
+    <div class="eyebrow">05 — Services &amp; Pricing</div>
+    <div class="s-title">What We Deliver, <em>At What Cost</em></div>
+    <div class="s-sub">One-time setup · Monthly management · Ad spend is separate and billed directly to you</div>
+    <div class="warn">
+      <span style="font-size:18px;flex-shrink:0">⚠️</span>
+      <div style="font-size:13px;color:var(--white);line-height:1.5"><strong style="color:var(--pure)">Important:</strong> Work begins only after the setup fee advance of <strong style="color:var(--pure)">€625 (50%) has been received.</strong> No exceptions.</div>
+    </div>
+  </div>
+  <div class="s-body">
+    <div class="g2 a">
+      <div>
+        <div class="sec">One-Time Setup — €1,250</div>
+        <div class="card" style="padding:0;overflow:hidden;margin-bottom:12px">
+          <div class="svc"><div class="svc-yes">✓</div><div><div class="svc-t">Google Ads Account + B2B Search Campaign</div><div class="svc-s">Ad groups, keyword mapping, ad copy, match types &amp; extensions</div></div></div>
+          <div class="svc"><div class="svc-yes">✓</div><div><div class="svc-t">Google Merchant Center + B2C Shopping Campaign</div><div class="svc-s">Product feed sync via Shopify, multi-country Europe targeting</div></div></div>
+          <div class="svc"><div class="svc-yes">✓</div><div><div class="svc-t">GA4 + Google Tag Manager + Conversion Tracking</div><div class="svc-s">Purchase, B2B form, add-to-cart — fully tracked and verified</div></div></div>
+          <div class="svc"><div class="svc-yes">✓</div><div><div class="svc-t">Meta Pixel + CAPI + Awareness Campaign</div><div class="svc-s">Facebook + Instagram audience targeting across Europe</div></div></div>
+          <div class="svc"><div class="svc-yes">✓</div><div><div class="svc-t">Instagram Retargeting Campaign</div><div class="svc-s">Re-engage Google visitors across Meta platforms</div></div></div>
+          <div class="svc"><div class="svc-yes">✓</div><div><div class="svc-t">TikTok Pixel — Passive Data Collection</div><div class="svc-s">Campaigns off — audience intelligence building quietly in the background</div></div></div>
+          <div class="svc"><div class="svc-yes">✓</div><div><div class="svc-t">B2B Wholesale Landing Page (Shopify)</div><div class="svc-s">MOQ info, key benefits, contact form &amp; founder story</div></div></div>
+          <div class="svc" style="border-bottom:none"><div class="svc-yes">✓</div><div><div class="svc-t">Reviews App + Klarna Badge + Trust Elements</div><div class="svc-s">Klarna BNPL badge on product pages + customer review display</div></div></div>
+        </div>
+        <div class="pbox">
+          <div><div class="pbox-lbl">One-Time Setup Fee</div><div class="pbox-val">€1,250</div><div class="pbox-note">50% advance to start · 50% on completion</div></div>
+          <div style="text-align:right"><div style="font-size:11px;color:rgba(0,0,0,.45);margin-bottom:3px">8 deliverables</div><div style="font-size:12px;color:rgba(0,0,0,.65);font-weight:700">included</div></div>
+        </div>
+      </div>
+      <div>
+        <div class="sec">Monthly Management — €450</div>
+        <div class="card" style="padding:0;overflow:hidden;margin-bottom:12px">
+          <div class="svc"><div class="svc-yes">✓</div><div><div class="svc-t">Weekly Campaign Optimization — 4× Per Month</div><div class="svc-s">Bids, keywords, budget reallocation, negative keywords</div></div></div>
+          <div class="svc"><div class="svc-yes">✓</div><div><div class="svc-t">Ad Copy Refresh</div><div class="svc-s">We update headlines immediately when CTR begins to drop</div></div></div>
+          <div class="svc"><div class="svc-yes">✓</div><div><div class="svc-t">Meta Audience Optimization</div><div class="svc-s">Scale what works, eliminate what doesn't — every week</div></div></div>
+          <div class="svc"><div class="svc-yes">✓</div><div><div class="svc-t">Monthly Performance Report</div><div class="svc-s">Full spend breakdown, conversions, ROAS + next month's strategy</div></div></div>
+          <div class="svc"><div class="svc-yes">✓</div><div><div class="svc-t">WhatsApp Updates</div><div class="svc-s">Any significant developments — we notify you immediately</div></div></div>
+          <div class="svc"><div class="svc-no">✗</div><div><div class="svc-t" style="color:var(--g6)">Ad Spend — Not Included</div><div class="svc-s">Paid directly to Google/Meta/TikTok — this is your separate media budget</div></div></div>
+          <div class="svc" style="border-bottom:none"><div class="svc-no">✗</div><div><div class="svc-t" style="color:var(--g6)">Additional New Campaigns — Not Included</div><div class="svc-s">UAE, TikTok launch, etc. — quoted separately at €100–150 per campaign</div></div></div>
+        </div>
+        <div class="pbox2" style="margin-bottom:12px">
+          <div style="display:flex;align-items:center;justify-content:space-between">
+            <div><div class="pbox-lbl" style="color:var(--g6)">Monthly Management Fee</div><div style="font-size:36px;font-weight:900;color:var(--pure);letter-spacing:-.03em;line-height:1">€450</div><div style="font-size:11px;color:var(--g6);margin-top:3px">Per month · Minimum 3-month engagement</div></div>
+          </div>
+        </div>
+        <div class="offer">
+          <div class="offer-tag">🎁 Special Offer</div>
+          <div style="display:flex;flex-direction:column;gap:8px">
+            <div style="background:var(--pure);border-radius:10px;padding:12px 14px">
+              <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:4px"><span style="font-size:13px;font-weight:800;color:var(--black)">Full Payment Upfront</span><span style="font-family:'DM Mono',monospace;font-size:12px;font-weight:700;color:var(--black)">€1,250</span></div>
+              <div style="font-size:12px;color:rgba(0,0,0,.55)">Your <strong style="color:var(--black)">first month of management is complimentary</strong> — a saving of €450</div>
+            </div>
+            <div style="background:var(--g3);border:1px solid var(--border);border-radius:10px;padding:12px 14px">
+              <div style="font-size:13px;font-weight:700;color:var(--white);margin-bottom:3px">Standard — 50% Advance</div>
+              <div style="font-size:12px;color:var(--g6)">€625 to start + €625 on completion · Management billed at €450/month</div>
+            </div>
+          </div>
+        </div>
+        <div class="ref-box" style="margin-top:10px">
+          <div style="display:flex;align-items:flex-start;gap:10px">
+            <span style="font-size:18px;flex-shrink:0">🤝</span>
+            <div><div style="font-size:13px;font-weight:700;color:var(--pure);margin-bottom:4px">Referral Programme — 30% Off</div><div style="font-size:12px;color:var(--g6);line-height:1.6">Refer one successful client and receive a <strong style="color:var(--white)">30% discount on all services</strong> for your next 3 months — setup, management, and any additional campaigns.<br><span style="font-family:'DM Mono',monospace;font-size:11px;color:var(--g7)">€450 → €315 &nbsp;·&nbsp; €1,250 → €875</span><br><span style="font-size:11px;color:var(--g5)">Discount applies once the referred client's project is active and paid.</span></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- S7 EXECUTION -->
+<div class="slide" id="s7" style="background:var(--black)">
+  <div class="s-head">
+    <div class="eyebrow">06 — Execution Roadmap</div>
+    <div class="s-title">Our Process, <em>Step by Step</em></div>
+    <div class="s-sub">Website first · tracking second · campaigns third — the right sequence, every time</div>
+  </div>
+  <div class="s-body">
+    <div class="tl a">
+      <div class="tl-line"></div>
+      <div class="tl-item">
+        <div class="tl-dot on"></div>
+        <div class="tl-card">
+          <div class="tl-head"><div class="tl-when">Phase 1 · Day 1–3</div><div class="tl-name">🏗️ We Prepare the Website</div></div>
+          <div class="tl-steps">
+            <div class="tl-step">We collect reviews from existing customers and publish them on the website</div>
+            <div class="tl-step">We add the Klarna BNPL badge to all product pages</div>
+            <div class="tl-step">We enhance the B2B wholesale page — MOQ, benefits, and contact form</div>
+            <div class="tl-step">We add homepage trust elements and update shipping policy</div>
+          </div>
+          <div class="tl-note">We prepare the foundation before running ads — a strong website is what turns clicks into customers.</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot on"></div>
+        <div class="tl-card">
+          <div class="tl-head"><div class="tl-when">Phase 2 · Week 1–2</div><div class="tl-name">⚙️ We Build the Full Tracking Infrastructure</div></div>
+          <div class="tl-steps">
+            <div class="tl-step">We connect Meta Pixel + Conversions API via Shopify</div>
+            <div class="tl-step">We install TikTok Pixel in passive data collection mode</div>
+            <div class="tl-step">We configure GA4 + Google Tag Manager on the store</div>
+            <div class="tl-step">We set up the Google Ads account and Merchant Center</div>
+            <div class="tl-step">We sync the product feed from Shopify</div>
+            <div class="tl-step">We verify all conversion events are firing correctly</div>
+          </div>
+          <div class="tl-note">Campaigns without tracking are money spent in the dark — we complete this fully before launching any ads.</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-card">
+          <div class="tl-head"><div class="tl-when">Phase 3 · Week 2–3</div><div class="tl-name">🔍 We Launch Google Campaigns</div></div>
+          <div class="tl-steps">
+            <div class="tl-step">We launch the B2B Search Campaign targeting boutique owners in UK, France, NL, UAE</div>
+            <div class="tl-step">We launch the B2C Shopping Campaign once the product feed is approved</div>
+            <div class="tl-step">We build a comprehensive negative keyword list to protect your budget</div>
+            <div class="tl-step">We review first-week data and make immediate optimizations</div>
+          </div>
+          <div class="tl-note">Google first — the buyer is already searching and ready. No convincing required.</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-card">
+          <div class="tl-head"><div class="tl-when">Phase 4 · Week 3–4</div><div class="tl-name">📘 We Launch Meta Campaigns</div></div>
+          <div class="tl-steps">
+            <div class="tl-step">We launch an Instagram Reels Awareness campaign targeting women 25–45 across Europe</div>
+            <div class="tl-step">We retarget Google website visitors across Facebook and Instagram</div>
+            <div class="tl-step">We connect the Product Catalog for Dynamic Product Ads</div>
+            <div class="tl-step">We build Lookalike Audiences from pixel data as it accumulates</div>
+          </div>
+          <div class="tl-note">Google attracts. Meta converts. Together, they create a full-funnel system.</div>
+        </div>
+      </div>
+      <div class="tl-item" style="margin-bottom:0">
+        <div class="tl-dot"></div>
+        <div class="tl-card">
+          <div class="tl-head"><div class="tl-when">Phase 5 · Month 2+</div><div class="tl-name">🚀 We Optimize, Scale &amp; Expand</div></div>
+          <div class="tl-steps">
+            <div class="tl-step">We analyze data and scale the highest-performing campaigns and markets</div>
+            <div class="tl-step">We launch UAE campaigns from the India warehouse</div>
+            <div class="tl-step">We activate TikTok Spark Ads — boosting @ibban.europe organic content</div>
+            <div class="tl-step">We deliver a monthly report and align on the strategy for the next month</div>
+          </div>
+          <div class="tl-note">We scale only when we have proof — budgets increase after data confirms what works.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- S8 TESTING -->
+<div class="slide" id="s8" style="background:var(--black);justify-content:center;align-items:center">
+  <div style="position:absolute;inset:0;background:radial-gradient(ellipse 50% 50% at 50% 50%,rgba(255,255,255,.02) 0%,transparent 70%);pointer-events:none"></div>
+  <div style="position:relative;z-index:1;text-align:center;padding:0 72px;width:100%">
+    <div class="a" style="display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:16px">
+      <div style="width:22px;height:1px;background:var(--g5)"></div>
+      <span style="font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--g5);font-weight:700">An Important Truth</span>
+      <div style="width:22px;height:1px;background:var(--g5)"></div>
+    </div>
+    <div class="a" style="font-size:90px;font-weight:900;color:var(--pure);letter-spacing:-.04em;line-height:.9;margin-bottom:11px">TESTING</div>
+    <div class="a" style="font-size:17px;color:var(--g6);font-weight:400;margin-bottom:9px;letter-spacing:.01em">Marketing Is a Science, Not a Promise</div>
+    <div class="a" style="font-size:15px;color:var(--g7);margin-bottom:40px;max-width:540px;margin-left:auto;margin-right:auto;line-height:1.8">Any agency that <strong style="color:var(--pure)">guarantees specific sales figures</strong> is not being honest with you.<br>No credible marketer guarantees outcomes — we guarantee execution, commitment, and transparency.</div>
+    <div class="a" style="display:grid;grid-template-columns:repeat(3,1fr);gap:13px;max-width:640px;margin:0 auto">
+      <div style="background:var(--g2);border:1px solid var(--border);border-radius:14px;padding:22px 16px;text-align:center">
+        <div style="font-size:30px;margin-bottom:10px">🧪</div>
+        <div style="font-size:15px;font-weight:800;color:var(--pure);margin-bottom:5px">Test First</div>
+        <div style="font-size:12px;color:var(--g6);line-height:1.6">Month one is discovery — we find out what works for your specific business</div>
+      </div>
+      <div style="background:var(--g2);border:1px solid var(--border);border-radius:14px;padding:22px 16px;text-align:center">
+        <div style="font-size:30px;margin-bottom:10px">⚙️</div>
+        <div style="font-size:15px;font-weight:800;color:var(--pure);margin-bottom:5px">Then Optimize</div>
+        <div style="font-size:12px;color:var(--g6);line-height:1.6">We double down on winners and eliminate waste immediately</div>
+      </div>
+      <div style="background:var(--g2);border:1px solid var(--border);border-radius:14px;padding:22px 16px;text-align:center">
+        <div style="font-size:30px;margin-bottom:10px">🚀</div>
+        <div style="font-size:15px;font-weight:800;color:var(--pure);margin-bottom:5px">Then Scale</div>
+        <div style="font-size:12px;color:var(--g6);line-height:1.6">Only after proof — we invest more where the returns are confirmed</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- S9 COMMITMENT -->
+<div class="slide" id="s9" style="background:var(--black);justify-content:center;align-items:center">
+  <div style="position:absolute;inset:0;background:radial-gradient(ellipse 45% 45% at 50% 50%,rgba(255,255,255,.018) 0%,transparent 70%);pointer-events:none"></div>
+  <div style="position:relative;z-index:1;text-align:center;padding:0 72px;width:100%">
+    <div class="a" style="font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--g5);font-weight:700;margin-bottom:7px">Our Commitment to You</div>
+    <div class="a" style="font-size:115px;font-weight:900;color:var(--pure);letter-spacing:-.04em;line-height:.9;margin-bottom:7px">100%</div>
+    <div class="a" style="font-size:17px;color:var(--g6);margin-bottom:30px;font-weight:400">We will give everything we have to grow your business</div>
+    <div class="a" style="display:flex;flex-direction:column;gap:7px;max-width:520px;margin:0 auto 26px">
+      <div style="display:flex;align-items:center;gap:12px;background:var(--g2);border:1px solid var(--border);padding:10px 15px;border-radius:10px;text-align:left">
+        <span style="font-size:16px;flex-shrink:0">✅</span>
+        <span style="font-size:13px;color:var(--white)">We optimize campaigns every week — 4 times per month, without fail</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:12px;background:var(--g2);border:1px solid var(--border);padding:10px 15px;border-radius:10px;text-align:left">
+        <span style="font-size:16px;flex-shrink:0">✅</span>
+        <span style="font-size:13px;color:var(--white)">We scale what performs and cut what doesn't — no guessing, only data</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:12px;background:var(--g2);border:1px solid var(--border);padding:10px 15px;border-radius:10px;text-align:left">
+        <span style="font-size:16px;flex-shrink:0">✅</span>
+        <span style="font-size:13px;color:var(--white)">We deliver a clear monthly report — every euro accounted for, nothing hidden</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:12px;background:var(--g2);border:1px solid var(--border);padding:10px 15px;border-radius:10px;text-align:left">
+        <span style="font-size:16px;flex-shrink:0">✅</span>
+        <span style="font-size:13px;color:var(--white)">We are available on WhatsApp — any important development, you hear from us first</span>
+      </div>
+    </div>
+    <div class="a" style="font-size:13px;color:var(--g5);border-top:1px solid var(--border);padding-top:15px;max-width:420px;margin:0 auto;font-style:italic">
+      "We cannot guarantee outcomes — but we guarantee our effort, our honesty, and our full commitment."
+      <div style="margin-top:8px;font-size:11px;font-family:'DM Mono',monospace;color:var(--g5)">Grow Nest &nbsp;·&nbsp; grownest.pro</div>
+    </div>
+  </div>
+</div>
+
+<!-- S10 CHARGES -->
+<div class="slide" id="s10" style="background:var(--black)">
+  <div class="s-head">
+    <div class="eyebrow">07 — Full Pricing Breakdown</div>
+    <div class="s-title">Complete Investment <em>Summary</em></div>
+    <div class="s-sub">What is included · What is not · All special offers</div>
+  </div>
+  <div class="s-body">
+    <div class="g2 a">
+      <div>
+        <div class="sec">Setup Fee Breakdown</div>
+        <div class="card" style="padding:0;overflow:hidden;margin-bottom:12px">
+          <div style="background:var(--g3);padding:7px 14px;display:flex;justify-content:space-between;border-bottom:1px solid var(--border)">
+            <span style="font-size:10px;font-weight:700;color:var(--g5);text-transform:uppercase;letter-spacing:.14em">Service</span>
+            <span style="font-size:10px;font-weight:700;color:var(--g5);text-transform:uppercase;letter-spacing:.14em">Fee</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;padding:9px 14px;border-bottom:1px solid var(--border)"><div><div style="font-size:13px;color:var(--white)">Google Ads + B2B Search Campaign</div><div style="font-size:11px;color:var(--g6);margin-top:1px">Account, ad groups, keywords, copy</div></div><span style="font-size:13px;font-weight:700;color:var(--pure);flex-shrink:0;margin-left:10px;font-family:'DM Mono',monospace">€280</span></div>
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;padding:9px 14px;border-bottom:1px solid var(--border)"><div><div style="font-size:13px;color:var(--white)">Merchant Center + Shopping Campaign</div><div style="font-size:11px;color:var(--g6);margin-top:1px">Product feed, Shopify sync, multi-country</div></div><span style="font-size:13px;font-weight:700;color:var(--pure);flex-shrink:0;margin-left:10px;font-family:'DM Mono',monospace">€150</span></div>
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;padding:9px 14px;border-bottom:1px solid var(--border)"><div><div style="font-size:13px;color:var(--white)">GA4 + GTM + Conversion Tracking</div><div style="font-size:11px;color:var(--g6);margin-top:1px">Purchase, form submission, cart events</div></div><span style="font-size:13px;font-weight:700;color:var(--pure);flex-shrink:0;margin-left:10px;font-family:'DM Mono',monospace">€220</span></div>
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;padding:9px 14px;border-bottom:1px solid var(--border)"><div><div style="font-size:13px;color:var(--white)">Meta Pixel + CAPI + Both Campaigns</div><div style="font-size:11px;color:var(--g6);margin-top:1px">Awareness campaign + retargeting campaign</div></div><span style="font-size:13px;font-weight:700;color:var(--pure);flex-shrink:0;margin-left:10px;font-family:'DM Mono',monospace">€200</span></div>
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;padding:9px 14px;border-bottom:1px solid var(--border)"><div><div style="font-size:13px;color:var(--white)">TikTok Pixel + B2B Landing Page</div><div style="font-size:11px;color:var(--g6);margin-top:1px">Passive data collection + Shopify page build</div></div><span style="font-size:13px;font-weight:700;color:var(--pure);flex-shrink:0;margin-left:10px;font-family:'DM Mono',monospace">€70</span></div>
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;padding:9px 14px;border-bottom:1px solid var(--border)"><div><div style="font-size:13px;color:var(--white)">Reviews + Klarna Badge + Trust Elements</div><div style="font-size:11px;color:var(--g6);margin-top:1px">Product pages + homepage updates</div></div><span style="font-size:13px;font-weight:700;color:var(--pure);flex-shrink:0;margin-left:10px;font-family:'DM Mono',monospace">€80</span></div>
+          <div style="display:flex;justify-content:space-between;align-items:center;padding:12px 14px;background:var(--pure)"><span style="font-size:13px;font-weight:800;color:var(--black)">Total Setup Fee</span><span style="font-size:22px;font-weight:900;color:var(--black);font-family:'DM Mono',monospace">€1,250</span></div>
+        </div>
+        <div class="card" style="padding:0;overflow:hidden">
+          <div style="background:var(--g3);padding:7px 14px;border-bottom:1px solid var(--border)"><span style="font-size:10px;font-weight:700;color:var(--g5);text-transform:uppercase;letter-spacing:.14em">Monthly Management Breakdown</span></div>
+          <div style="display:flex;justify-content:space-between;padding:8px 14px;border-bottom:1px solid var(--border);font-size:13px"><span style="color:var(--g7)">Weekly Optimization — 4×/month</span><span style="color:var(--pure);font-family:'DM Mono',monospace;font-weight:600">€200</span></div>
+          <div style="display:flex;justify-content:space-between;padding:8px 14px;border-bottom:1px solid var(--border);font-size:13px"><span style="color:var(--g7)">Meta + Ad Copy Refresh</span><span style="color:var(--pure);font-family:'DM Mono',monospace;font-weight:600">€150</span></div>
+          <div style="display:flex;justify-content:space-between;padding:8px 14px;border-bottom:1px solid var(--border);font-size:13px"><span style="color:var(--g7)">Monthly Report + WhatsApp Updates</span><span style="color:var(--pure);font-family:'DM Mono',monospace;font-weight:600">€100</span></div>
+          <div style="display:flex;justify-content:space-between;align-items:center;padding:11px 14px;background:var(--g3);border:1px solid var(--border2)"><span style="font-size:13px;font-weight:700;color:var(--white)">Monthly Total</span><span style="font-size:22px;font-weight:900;color:var(--pure);font-family:'DM Mono',monospace">€450</span></div>
+        </div>
+      </div>
+      <div>
+        <div class="sec">Offers &amp; Incentives</div>
+        <div class="offer" style="margin-bottom:10px">
+          <div class="offer-tag">🎁 Early Payment</div>
+          <div style="background:var(--pure);border-radius:10px;padding:12px 14px;margin-bottom:8px">
+            <div style="display:flex;justify-content:space-between;margin-bottom:4px"><span style="font-size:13px;font-weight:800;color:var(--black)">Full Upfront — Best Value</span><span style="font-family:'DM Mono',monospace;font-size:12px;font-weight:700;color:var(--black)">€1,250</span></div>
+            <div style="font-size:12px;color:rgba(0,0,0,.55)">First month of management is <strong style="color:var(--black)">completely free</strong> — save €450</div>
+          </div>
+          <div style="background:var(--g3);border:1px solid var(--border);border-radius:10px;padding:12px 14px">
+            <div style="font-size:13px;font-weight:700;color:var(--white);margin-bottom:4px">Standard — 50% Advance</div>
+            <div style="display:flex;justify-content:space-between;font-size:12px;color:var(--g6);padding:2px 0;border-bottom:1px solid var(--border)"><span>50% to begin</span><span style="font-family:'DM Mono',monospace">€625</span></div>
+            <div style="display:flex;justify-content:space-between;font-size:12px;color:var(--g6);padding:2px 0;border-bottom:1px solid var(--border)"><span>50% on delivery</span><span style="font-family:'DM Mono',monospace">€625</span></div>
+            <div style="display:flex;justify-content:space-between;font-size:12px;color:var(--g6);padding:2px 0"><span>Monthly management</span><span style="font-family:'DM Mono',monospace">€450/mo</span></div>
+          </div>
+        </div>
+        <div class="ref-box" style="margin-bottom:12px">
+          <div style="display:flex;align-items:flex-start;gap:10px">
+            <span style="font-size:18px;flex-shrink:0">🤝</span>
+            <div><div style="font-size:13px;font-weight:700;color:var(--pure);margin-bottom:4px">Referral — 30% Discount</div><div style="font-size:12px;color:var(--g6);line-height:1.6">Refer one client who successfully starts a project — receive <strong style="color:var(--white)">30% off all services</strong> for your next 3 months.<br><span style="font-family:'DM Mono',monospace;font-size:11px;color:var(--g7)">€450 → €315 &nbsp;·&nbsp; €1,250 → €875</span></div></div>
+          </div>
+        </div>
+        <div class="sec">3-Month Total Investment</div>
+        <div class="card" style="padding:0;overflow:hidden">
+          <div style="display:flex;justify-content:space-between;padding:8px 14px;border-bottom:1px solid var(--border);font-size:13px"><span style="color:var(--g7)">One-time setup fee</span><span style="color:var(--pure);font-family:'DM Mono',monospace">€1,250</span></div>
+          <div style="display:flex;justify-content:space-between;padding:8px 14px;border-bottom:1px solid var(--border);font-size:13px"><span style="color:var(--g7)">Management × 3 months</span><span style="color:var(--pure);font-family:'DM Mono',monospace">€1,350</span></div>
+          <div style="display:flex;justify-content:space-between;align-items:center;padding:13px 14px;background:var(--pure)">
+            <span style="font-size:14px;font-weight:800;color:var(--black)">Total (3 months)</span>
+            <span style="font-size:26px;font-weight:900;color:var(--black);font-family:'DM Mono',monospace">€2,600</span>
+          </div>
+          <div style="padding:8px 14px;font-size:11px;color:var(--g6);display:flex;align-items:center;gap:6px">
+            <span>💡</span> Pay upfront → 3 months for €2,150 (first month management free)
+          </div>
+        </div>
+        <div class="card card-sm" style="margin-top:10px;display:flex;align-items:flex-start;gap:10px">
+          <span style="color:var(--g5);font-size:14px;flex-shrink:0">✗</span>
+          <div style="font-size:12px;color:var(--g6)"><strong style="color:var(--g7)">Not included:</strong> Ad spend paid directly to Google / Meta / TikTok — this is your media budget, entirely separate from our fees.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- S11 NEXT STEPS -->
+<div class="slide" id="s11" style="background:var(--pure)">
+  <div style="position:absolute;inset:0;background:radial-gradient(ellipse 55% 55% at 78% 28%,rgba(0,0,0,.03) 0%,transparent 70%);pointer-events:none"></div>
+  <div style="padding:34px 52px 20px;position:relative;z-index:1;flex-shrink:0;border-bottom:1px solid rgba(0,0,0,.07)">
+    <div style="font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:rgba(0,0,0,.3);font-weight:700;margin-bottom:6px">Next Steps</div>
+    <div style="font-size:50px;font-weight:900;color:var(--black);line-height:.93;letter-spacing:-.04em">Ready to<br>Get Started?</div>
+  </div>
+  <div style="flex:1;padding:0 52px 90px;position:relative;z-index:1;overflow-y:auto">
+    <div class="a" style="display:flex;gap:16px;align-items:flex-start;padding:13px 0;border-bottom:1px solid rgba(0,0,0,.06)">
+      <div style="font-family:'DM Mono',monospace;font-size:22px;font-weight:700;color:rgba(0,0,0,.1);min-width:34px">01</div>
+      <div><div style="font-size:15px;color:var(--black);font-weight:700">Confirm Your Monthly Ad Budget</div><div style="font-size:13px;color:rgba(0,0,0,.4);margin-top:2px">How much will you allocate to Google and Meta per month? This is separate from our management fee and paid directly to the platforms.</div></div>
+    </div>
+    <div class="a" style="display:flex;gap:16px;align-items:flex-start;padding:13px 0;border-bottom:1px solid rgba(0,0,0,.06)">
+      <div style="font-family:'DM Mono',monospace;font-size:22px;font-weight:700;color:rgba(0,0,0,.1);min-width:34px">02</div>
+      <div><div style="font-size:15px;color:var(--black);font-weight:700">Define Your Priority — B2B or B2C First?</div><div style="font-size:13px;color:rgba(0,0,0,.4);margin-top:2px">We will run both — but which do you want us to push harder initially? Boutique wholesale buyers, or direct end customers?</div></div>
+    </div>
+    <div class="a" style="display:flex;gap:16px;align-items:flex-start;padding:13px 0;border-bottom:1px solid rgba(0,0,0,.06)">
+      <div style="font-family:'DM Mono',monospace;font-size:22px;font-weight:700;color:rgba(0,0,0,.1);min-width:34px">03</div>
+      <div><div style="font-size:15px;color:var(--black);font-weight:700">Choose Your Payment Option</div><div style="font-size:13px;color:rgba(0,0,0,.4);margin-top:2px">Full upfront €1,250 — and your first month of management is on us. Or standard 50% advance of €625 to begin.</div></div>
+    </div>
+    <div class="a" style="display:flex;gap:16px;align-items:flex-start;padding:13px 0;border-bottom:1px solid rgba(0,0,0,.06)">
+      <div style="font-family:'DM Mono',monospace;font-size:22px;font-weight:700;color:rgba(0,0,0,.1);min-width:34px">04</div>
+      <div><div style="font-size:15px;color:var(--black);font-weight:700">Sign a 3-Month Engagement</div><div style="font-size:13px;color:rgba(0,0,0,.4);margin-top:2px">A minimum 3-month commitment is required — paid advertising takes time to gather data, optimize, and deliver meaningful results.</div></div>
+    </div>
+    <div class="a" style="display:flex;gap:16px;align-items:flex-start;padding:13px 0;border-bottom:1px solid rgba(0,0,0,.06)">
+      <div style="font-family:'DM Mono',monospace;font-size:22px;font-weight:700;color:rgba(0,0,0,.1);min-width:34px">05</div>
+      <div><div style="font-size:15px;color:var(--black);font-weight:700">We Begin This Week</div><div style="font-size:13px;color:rgba(0,0,0,.4);margin-top:2px">Agree today — Phase 1 starts immediately. Website updates, Klarna badge, and customer reviews are live within days.</div></div>
+    </div>
+    <div class="a" style="display:flex;align-items:center;gap:10px;margin-top:20px">
+      <div style="width:8px;height:8px;border-radius:50%;background:rgba(0,0,0,.18)"></div>
+      <div><div style="font-size:13px;font-weight:700;color:rgba(0,0,0,.45)">Grow Nest</div><div style="font-size:11px;color:rgba(0,0,0,.28);font-family:'DM Mono',monospace">grownest.pro</div></div>
+    </div>
+  </div>
+</div>
+
+</div>
+<div id="nav">
+  <button class="nb" id="pb" onclick="go(-1)" disabled>&#8592;</button>
+  <div class="dots" id="dots"></div>
+  <span id="ctr">1 / 11</span>
+  <button class="nb" id="nb2" onclick="go(1)">&#8594;</button>
+</div>
+<script>
+const slides=document.querySelectorAll('.slide'),total=slides.length;
+let cur=0;
+const dotsEl=document.getElementById('dots');
+slides.forEach((_,i)=>{const d=document.createElement('div');d.className='dn'+(i===0?' on':'');d.onclick=()=>goTo(i);dotsEl.appendChild(d);});
+function goTo(n){
+  if(n<0||n>=total)return;
+  slides[cur].classList.remove('active');slides[cur].classList.add('exit');
+  const prev=cur;cur=n;
+  setTimeout(()=>slides[prev].classList.remove('exit'),500);
+  slides[cur].classList.add('active');
+  setTimeout(()=>{slides[cur].querySelectorAll('.bar-fill').forEach(b=>{const w=b.style.width;b.style.width='0';setTimeout(()=>b.style.width=w,60);});},180);
+  document.querySelectorAll('.dn').forEach((d,i)=>d.classList.toggle('on',i===cur));
+  document.getElementById('ctr').textContent=(cur+1)+' / '+total;
+  document.getElementById('pb').disabled=cur===0;
+  document.getElementById('nb2').disabled=cur===total-1;
+}
+function go(d){goTo(cur+d);}
+document.addEventListener('keydown',e=>{if(e.key==='ArrowRight'||e.key===' ')go(1);if(e.key==='ArrowLeft')go(-1);});
+let tx=0;
+document.addEventListener('touchstart',e=>tx=e.touches[0].clientX);
+document.addEventListener('touchend',e=>{const dx=tx-e.changedTouches[0].clientX;if(Math.abs(dx)>50)go(dx>0?1:-1);});
+setTimeout(()=>{slides[0].querySelectorAll('.bar-fill').forEach(b=>{const w=b.style.width;b.style.width='0';setTimeout(()=>b.style.width=w,100);});},400);
+</script>
+</body>
+</html>
